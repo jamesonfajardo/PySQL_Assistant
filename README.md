@@ -1,3 +1,5 @@
+![pysql](https://raw.githubusercontent.com/jamesonfajardo/PySQL_Assistant/master/pysql.png)
+
 # PySQL_Assistant
 PySQL_Assistant(python mysql assistant) is a module that makes it easy to query mysql using python
 
