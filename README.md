@@ -322,3 +322,28 @@ How to use:
     print(PySQL())
 
 
+![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `Join tables`  
+
+    import PySQL_Assistant
+
+    def PySQL():
+
+        host = 'localhost'
+        user = 'root'
+        passwd = ''
+        db = 'pydb'
+
+        query = 'select products.name as product, customers.name as customer, customers.address as address \
+                 from customers \
+                 inner join products \
+                 on customers.id=products.id;'
+        placeholder_value = ''
+        appends = ''
+
+        qObj = PySQL_Assistant.MYSQL_DBH(host, user, passwd, db, query.format(appends), placeholder_value)
+        return qObj.DB_Query()
+
+    for x in PySQL():
+        print(x)
+
+
