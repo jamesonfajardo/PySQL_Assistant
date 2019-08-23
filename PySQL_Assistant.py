@@ -78,7 +78,3 @@ class MYSQL_DBH:
         this.mydb.commit()
 
         return queryNotif
-
-# Some notes:
-# -> Always use placeholders
-# -> Use tuple when using placeholders(%s)
