@@ -1,19 +1,25 @@
+import mysql.connector
+import re
+
 class MYSQL_DBH:
-    def __init__(this, __SQL_Q=None, __SQL_QV=None, __SQL_DB=None):
+    def __init__(this, __SQL_H=None, __SQL_UN=None, __SQL_PW=None, __SQL_DB=None, __SQL_Q=None, __SQL_QV=None):
+        this.sql_h = __SQL_H
+        this.sql_un = __SQL_UN
+        this.sql_pw = __SQL_PW
         this.sql_q = __SQL_Q
         this.sql_qv = __SQL_QV
         this.sql_db = __SQL_DB
 
-    def DB_Query(this):
-        import mysql.connector
-        import re
-        mydb = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            passwd='',
-            db=this.sql_db
+        this.mydb = mysql.connector.connect(
+            host=__SQL_H,
+            user=__SQL_UN,
+            passwd=__SQL_PW,
+            db=__SQL_DB
         )
-        dbc = mydb.cursor()
+
+    def DB_Query(this):
+        dbc = this.mydb.cursor()
+
         if (re.search('^create database', this.sql_q, re.IGNORECASE)):
             dbc.execute(this.sql_q, this.sql_qv)
             queryNotif = 'Database Created'
@@ -32,7 +38,7 @@ class MYSQL_DBH:
 
             elif (type(this.sql_qv) == list):
                 dbc.executemany(this.sql_q, this.sql_qv)
-                queryNotif = str(dbc.rowcount) + ' records inserted'
+                queryNotif = str(dbc.rowcount) + ' records inserted, ID: ' + str(dbc.lastrowid) + ' to ID: ' + str(dbc.lastrowid + (dbc.rowcount - 1))
 
         # SELECT
         elif (re.search('^select', this.sql_q, re.IGNORECASE)):
@@ -66,13 +72,9 @@ class MYSQL_DBH:
 
         # OTHERS NOT COVERED
         else:
-            dbc.execute(this.sql_q, this.sql_qv, re.IGNORECASE)
+            dbc.execute(this.sql_q, this.sql_qv)
             queryNotif = 'Query Success'
 
-        mydb.commit()
+        this.mydb.commit()
 
         return queryNotif
-
-# Some notes:
-# -> Always use placeholders
-# -> Use tuple when using placeholders(%s)
