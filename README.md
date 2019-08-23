@@ -10,14 +10,19 @@ How to use:
 2. Define a function (steps 3-5 will be inside this function)  
     **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) def PySQL():**
 
-3. Create 4 variables. Make the value empty if you won't be using it:  
+3. Create 7 variables. Make the value empty if you won't be using it:  
+
+    **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) host = ''** `Your database host`  
+    **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) user = ''** `Your database username`  
+    **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) passwd = ''** `Your database password`  
+    **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) db = ''** `Your database name`  
+    
     **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) query=''** `This will contain your queries. Always query using string interpolation {} and placeholders %s`  
-    **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) query_value=''** `This will contain the value of the placeholders, must be always inside tuple`  
-    **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) db_name=''** `Your database name`  
+    **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) placeholder_value=''** `This will contain the value of the placeholders, must be always inside tuple`  
     **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) appends=''**  `This will contain the value of the interpolation`
     
 4. Bind the object MYSQL_DBH (mysql database handler) to a var  
-  **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) qObj = PySQL_Assistant.MYSQL_DBH(`query.format(appends)`, `query_val`, `db_name`)**  
+  **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) qObj = PySQL_Assistant.MYSQL_DBH(host, user, passwd, db, `query.format(appends)`, `placeholder_value`)**  
   ..4.1 MYSQL_DBH accepts 3 args (`query.format(appends)`, `query_val`, `db_name`)  
   ..4.2 Placeholders are necessary that's why there's a query and query value  
   
