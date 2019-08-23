@@ -21,7 +21,7 @@ How to use:
     **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) placeholder_value=''** `This will contain the value of the placeholders, must be always inside tuple`  
     **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) appends=''**  `This will contain the value of the interpolation`
     
-4. Bind the object MYSQL_DBH (mysql database handler) to a var  
+4. Bind the object method MYSQL_DBH (mysql database handler) to a var  
   **![#00FA9A](https://placehold.it/15/00FA9A/000000?text=+) qObj = PySQL_Assistant.MYSQL_DBH(host, user, passwd, db, `query.format(appends)`, `placeholder_value`)**  
   ..4.1 Placeholders are necessary that's why there's a query and placeholder value  
   
