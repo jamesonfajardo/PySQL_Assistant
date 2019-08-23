@@ -11,10 +11,10 @@ class MYSQL_DBH:
         this.sql_db = __SQL_DB
 
         this.mydb = mysql.connector.connect(
-            host=__SQL_H,
-            user=__SQL_UN,
-            passwd=__SQL_PW,
-            db=__SQL_DB
+            host=this.sql_h,
+            user=this.sql_un,
+            passwd=this.sql_pw,
+            db=this.sql_db
         )
 
     def DB_Query(this):
@@ -78,3 +78,7 @@ class MYSQL_DBH:
         this.mydb.commit()
 
         return queryNotif
+
+# Some notes:
+# -> Always use placeholders
+# -> Use tuple when using placeholders(%s)
